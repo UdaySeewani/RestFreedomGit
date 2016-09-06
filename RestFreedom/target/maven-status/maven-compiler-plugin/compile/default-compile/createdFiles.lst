@@ -1,7 +1,9 @@
 com\freedom\springmvc\configuration\HelloWorldInitializer.class
+com\freedom\springmvc\controller\CustomController.class
 com\freedom\springmvc\configuration\HelloWorldConfiguration.class
 com\freedom\springmvc\service\UserServiceImpl.class
 com\freedom\springmvc\service\UserService.class
 com\freedom\springmvc\domain\Message.class
+com\freedom\springmvc\configuration\SwaggerConfig.class
 com\freedom\springmvc\controller\HelloWorldRestController.class
 com\freedom\springmvc\model\User.class
