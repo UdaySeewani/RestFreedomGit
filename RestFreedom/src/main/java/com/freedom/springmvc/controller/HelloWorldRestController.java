@@ -91,7 +91,7 @@ public class HelloWorldRestController {
     }
  
      
-   /* //------------------- Update a User --------------------------------------------------------
+    //------------------- Update a User --------------------------------------------------------
 	@ApiOperation(httpMethod="PUT", value="Update a Single User", response=ResponseEntity.class)
     @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
@@ -139,6 +139,6 @@ public class HelloWorldRestController {
  
         userService.deleteAllUsers();
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
-    }*/
+    }
 
 }
