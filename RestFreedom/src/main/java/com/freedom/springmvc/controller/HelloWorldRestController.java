@@ -17,20 +17,25 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.freedom.springmvc.domain.Message;
 import com.freedom.springmvc.model.User;
 import com.freedom.springmvc.service.UserService;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
+@Api(value  ="/", description = "HelloWorld service")
 @RestController
 public class HelloWorldRestController {
 	
+	@ApiOperation(httpMethod="GET",value="Welcome service",response=String.class)
 	@RequestMapping("/")
 	public String welcome() {
 		return "welcome to RestTemplate Example"; 
 	}
 	
+	/*@ApiOperation(httpMethod="GET", value="Hello Message", response=Message.class)
 	@RequestMapping("/hello/{player}")
 	public Message message(@PathVariable String player) {
 		Message msg = new Message(player, "Hello"+player);
 		return msg;
-	}
+	}*/
 	
 	
 	@Autowired
@@ -39,6 +44,7 @@ public class HelloWorldRestController {
      
     //-------------------Retrieve All Users--------------------------------------------------------
      
+	@ApiOperation(httpMethod="GET", value="List all the Users", response=ResponseEntity.class)
     @RequestMapping(value = "/user/", method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers() {
         List<User> users = userService.findAllUsers();
@@ -50,7 +56,8 @@ public class HelloWorldRestController {
  
  
     //-------------------Retrieve Single User--------------------------------------------------------
-     
+	
+	@ApiOperation(httpMethod="GET", value="List a Single User", response=ResponseEntity.class) 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getUser(@PathVariable("id") long id) {
         System.out.println("Fetching User with id " + id);
@@ -66,6 +73,7 @@ public class HelloWorldRestController {
      
     //-------------------Create a User--------------------------------------------------------
      
+	@ApiOperation(httpMethod="POST", value="Create a User", response=ResponseEntity.class)
     @RequestMapping(value = "/user/", method = RequestMethod.POST)
     public ResponseEntity<Void> createUser(@RequestBody User user,    UriComponentsBuilder ucBuilder) {
         System.out.println("Creating User " + user.getName());
@@ -83,8 +91,8 @@ public class HelloWorldRestController {
     }
  
      
-    //------------------- Update a User --------------------------------------------------------
-     
+   /* //------------------- Update a User --------------------------------------------------------
+	@ApiOperation(httpMethod="PUT", value="Update a Single User", response=ResponseEntity.class)
     @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
         System.out.println("Updating User " + id);
@@ -106,6 +114,7 @@ public class HelloWorldRestController {
  
     //------------------- Delete a User --------------------------------------------------------
      
+	@ApiOperation(httpMethod="DELETE", value="Delete a Single User", response=ResponseEntity.class)
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteUser(@PathVariable("id") long id) {
         System.out.println("Fetching & Deleting User with id " + id);
@@ -123,12 +132,13 @@ public class HelloWorldRestController {
      
     //------------------- Delete All Users --------------------------------------------------------
      
+	@ApiOperation(httpMethod="DELETE", value="Delete all Users", response=ResponseEntity.class)
     @RequestMapping(value = "/user/", method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteAllUsers() {
         System.out.println("Deleting All Users");
  
         userService.deleteAllUsers();
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
-    }
+    }*/
 
 }
